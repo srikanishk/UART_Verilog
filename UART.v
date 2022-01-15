@@ -8,7 +8,7 @@ module UART_transmitter(clk,start,in,stop,t_active,out,t_done);
 
   parameter S0=2'b00,S1=2'b01,S2=2'b10,S3=2'b11;
     //clock cycles per bit
-  integer cpb=26; //By changing cpb we can vary baud rate
+  integer cpb=26; 
 
   reg [1:0] state=S0; 
   
@@ -31,8 +31,8 @@ module UART_transmitter(clk,start,in,stop,t_active,out,t_done);
            end
       
       S1 : begin
-          out<=0; //transmit start bit
-        if(clk_count<cpb-1)
+          out<=0; 
+		  if(clk_count<cpb-1)
              begin 
                 clk_count<=clk_count+1;
                 state=S1;
@@ -114,7 +114,7 @@ module UART_receiver(I,clk,O,r_done);
            r_done=0;
            end
        
-     S1:  begin                           //wait out start bit
+     S1:  begin                           
           if(clk_count<cpb-1)
              begin 
                 clk_count<=clk_count+1;
@@ -127,7 +127,7 @@ module UART_receiver(I,clk,O,r_done);
              end
           end 
        
-       S2: begin            //Start receiving bits
+       S2: begin            
             if(clk_count<cpb-1)
               begin
                 clk_count<=clk_count+1;
@@ -151,7 +151,7 @@ module UART_receiver(I,clk,O,r_done);
              end
           end 
        
-       S3: begin       //wait out stop bit
+       S3: begin      
            if(I==1)
            begin
               if(clk_count<cpb-1)
