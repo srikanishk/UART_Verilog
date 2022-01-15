@@ -7,7 +7,7 @@ module UART_transmitter(clk,start,in,stop,t_active,out,t_done);
   output reg out,t_active=0,t_done=0;
 
   parameter S0=2'b00,S1=2'b01,S2=2'b10,S3=2'b11;
-    //clock cycles per bit
+   
   integer cpb=26; 
 
   reg [1:0] state=S0; 

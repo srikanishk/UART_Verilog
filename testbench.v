@@ -1,5 +1,3 @@
-
-
 module UART_tb;
   reg clk,start,stop;
   reg [7:0] in;
