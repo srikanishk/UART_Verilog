@@ -1,5 +1,3 @@
-//UART Project
-
 //UART transmitter
 module UART_transmitter(clk,start,in,stop,t_active,out,t_done);
   
